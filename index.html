@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My To-Do App</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="assets/mylogo.png" type="image/x-icon">
+</head>
+<body>
+
+    <div class="container">
+        <h1><i class="fas fa-clipboard-list"></i> My To-Do List</h1>
+
+        <!-- Add Task Form -->
+        <form id="add-task-form" class="task-form">
+            <input type="text" id="task-input" placeholder="What needs to be done?" required>
+            <div class="task-options">
+                <select id="priority-input">
+                    <option value="low">Low Priority</option>
+                    <option value="medium" selected>Medium Priority</option>
+                    <option value="high">High Priority</option>
+                </select>
+                <input type="date" id="due-date-input" title="Optional due date">
+                <button type="submit" title="Add Task"><i class="fas fa-plus"></i> Add</button>
+            </div>
+            <textarea id="notes-input" placeholder="Add optional notes..."></textarea>
+        </form>
+
+        <!-- Filter Controls -->
+        <div class="filter-controls">
+            <label for="filter-status">Status:</label>
+            <select id="filter-status">
+                <option value="all">All</option>
+                <option value="active">Active</option>
+                <option value="completed">Completed</option>
+            </select>
+
+            <label for="filter-priority">Priority:</label>
+            <select id="filter-priority">
+                <option value="all">All</option>
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+            </select>
+             <button id="clear-completed-btn" title="Clear Completed Tasks"><i class="fas fa-broom"></i> Clear Completed</button>
+        </div>
+
+        <!-- Task List -->
+        <ul id="task-list">
+            <!-- Tasks dynamically added here -->
+            <!-- Example Structure:
+            <li class="task-item priority-medium" data-id="1678886400000">
+                <div class="task-content">
+                    <div class="task-main">
+                        <input type="checkbox" class="task-complete-checkbox" title="Mark as complete">
+                        <span class="task-text">Example Task Text</span>
+                    </div>
+                    <div class="task-details">
+                        <span class="task-priority medium" title="Priority: Medium"><i class="fas fa-flag"></i> Medium</span>
+                        <span class="task-due-date " title="Due Date: 2023-10-30"><i class="fas fa-calendar-alt"></i> Oct 30, 2023 </span>
+                    </div>
+                    <div class="task-notes" title="Notes">
+                        <i class="fas fa-sticky-note"></i> These are the notes for the task.
+                    </div>
+                </div>
+                <div class="task-actions">
+                    <button class="edit-btn" title="Edit Task"><i class="fas fa-edit"></i></button>
+                    <button class="delete-btn" title="Delete Task"><i class="fas fa-trash-alt"></i></button>
+                </div>
+            </li>
+            -->
+        </ul>
+
+        <p id="empty-message" class="empty-message">Your To-Do list is empty!</p>
+
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <h2>Edit Task</h2>
+            <input type="hidden" id="edit-task-id">
+            <input type="text" id="edit-task-text" required>
+             <div class="task-options">
+                <select id="edit-priority">
+                    <option value="low">Low Priority</option>
+                    <option value="medium">Medium Priority</option>
+                    <option value="high">High Priority</option>
+                </select>
+                <input type="date" id="edit-due-date">
+            </div>
+            <textarea id="edit-notes-text" placeholder="Add/Edit notes..."></textarea>
+            <div class="modal-actions">
+                <button id="save-edit-btn"><i class="fas fa-save"></i> Save</button>
+                <button id="cancel-edit-btn"><i class="fas fa-times"></i> Cancel</button>
+            </div>
+        </div>
+    </div>
+    <div id="notification-area" class="notification-area">
+        <!-- Notifications will be dynamically added here -->
+    </div>
+
+    <!-- Make sure script is loaded last -->
+    <script src="script.js"></script>
+</body>
+</html>
